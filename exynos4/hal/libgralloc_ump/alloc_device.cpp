@@ -299,7 +299,7 @@ static int gralloc_alloc_buffer(alloc_device_t* dev, size_t size, int usage,
     if (usage & (GRALLOC_USAGE_HW_RENDER | GRALLOC_USAGE_HW_TEXTURE |
                  GRALLOC_USAGE_SW_WRITE_OFTEN | GRALLOC_USAGE_SW_READ_OFTEN)) {
         ALOGD_IF(debug_level > 0, "%s: Allocating graphicbuffer via ION...", __func__);
-        priv_alloc_flag = priv_alloc_flag | private_handle_t::PRIV_FLAGS_GRAPHICBUFFER;
+        priv_alloc_flag = priv_alloc_flag | private_handle_t::PRIV_FLAGS_GRAPHICBUFFER | private_handle_t::PRIV_FLAGS_USES_ION;
         ret = gralloc_alloc_ion(dev, size, usage, format, &ion_fd, &ion_paddr, &priv_alloc_flag, &ump_mem_handle);
     }
 
